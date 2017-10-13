@@ -1,0 +1,79 @@
+:root {
+    /* Brand Colors */
+    --green: #4CC4AA;
+    --pink: #C5047C;
+    --blue: #194F8B;
+    --white: #ffffff;
+    --black: #2D3234;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#cardtable{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--green);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#wrapper{
+    width: 488px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#new-game-button{
+    padding: 5px 10px;
+    background-color: var(--pink);
+    color: var(--white);
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#deck{
+    width: 488px;
+    height: 720px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.card{
+    width: 118px;
+    height: 160px;
+    margin: 2px 2px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url("images/RedBack.png");
+    cursor: pointer;
+}
+
+
+.spacer-20{
+    height: 50px;
+}
