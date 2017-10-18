@@ -61,9 +61,9 @@ function chooseCards(){
             default:
             console.error(`Error`, `The value (${number}) in chosenNumbers did not get handled by the switch`);
         }
-    })
-    let selectedCards2 = [...selectedCards];                                    // Create a copy of each card chosen above
-    cards = [...selectedCards, ...selectedCards2];                              // Add pairs of cards to main card deck
+    });
+
+    cards = [...selectedCards, ...selectedCards];                                // Add pairs of cards to main card deck
 }
 
 /**
@@ -129,7 +129,6 @@ function handleCardClick(e){
     e.target.classList.add('currentGuess');                                     // Apply currentGuess class to card
     
     if(userClicks === 2){                                                       // If second click
-        e.target.classList.add('currentGuess');                                 // Apply currentGuess class to card
         const [card1, card2] = document.querySelectorAll('.currentGuess');      // Select currentGuess cards
         
         if(card2 !== undefined){                                                // If both cards clicked are different (i.e 2 cards found)
