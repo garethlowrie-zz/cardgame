@@ -83,6 +83,7 @@ const program = (deck) => {
 
     // Function to handle when a card is clicked
     const handleCardClick = (e) => {
+        console.log(`handleCardClick(${e}) called`);
         // For all cards
         e.target.style.backgroundImage = `url("${e.target.dataset.image}")`;                                // Turn card over
 
@@ -128,12 +129,13 @@ const program = (deck) => {
                 playingCard.style.pointerEvents = 'auto';                                                   // Re-enable clicking
             });
         }
-        console.log(store.getState());                                                                      // Current State
-        console.log(store.getHistory());                                                                    // History
+        // console.log(store.getState());                                                                      // Current State
+        // console.log(store.getHistory());                                                                    // History
     };
 
     // Function to check for a win
     const checkForWin = () => {
+        console.log('checkForWin() called');
         if(store.getState().numberOfMatches === 8){
             alert('Congrats you won!');                                                                     // Alert is blocking
             startPlaying();                                                                                 // Set up new game when alert is dismissed
@@ -142,6 +144,7 @@ const program = (deck) => {
 
     // Function to create a Card object
     const createCard = (number, suit, image) => {
+        console.log(`createCard(${number}, ${suit}, ${image}) called`);
         return {
             number,
             suit,
@@ -151,14 +154,15 @@ const program = (deck) => {
 
     // Update Guesses UI and State
     const updateNumberOfGuesses = () => {
+        console.log('updateNumberOfGuesses() called');
         store.incrementGuesses();                                                                           // Update number of guesses
-        console.log(store.getState().numberOfGuesses);
         const guessesUI = document.querySelector('#guesses');
         guessesUI.textContent = `Number of guesses: ${store.getState().numberOfGuesses}`;
     };
 
     // Generate Cards
     const generateCards = (noOfCards) => {
+        console.log(`generateCards(${noOfCards}) called`);
         const suits = ['Diamonds', 'Hearts', 'Spades', 'Clubs'];                                            // Available suits
         const chosenNumbers = [];
         while(chosenNumbers.length < noOfCards/2){                                                          // Choose numbers
@@ -197,7 +201,7 @@ const program = (deck) => {
     };
 
     const displayCards = (deck) => {
-        
+        console.log(`displayCards(${deck}) called`);
         store.setPlayingCards(store.getState().cardsInGame.map((playingCard) => {
                 const card = document.createElement('div');
                 card.classList.add('card');
@@ -213,6 +217,7 @@ const program = (deck) => {
     };
 
     const removeCards = (deck) => {
+        console.log(`removeCards(${deck}) called`);
         while (deck.firstChild) {
             deck.removeChild(deck.firstChild);
         }
@@ -220,6 +225,7 @@ const program = (deck) => {
 
     // Function to shuffle cards
     const shuffleCards = (cards) => {
+        console.log(`shuffleCards(${cards}) called`);
         const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
         const shuffledDeck = shuffleArray(cards);
         store.setCardsInGame(shuffledDeck);
@@ -227,6 +233,7 @@ const program = (deck) => {
 
     // Function to reset game play and start new game
     const startPlaying = () => {
+        console.log('startPlaying() called');
         store.resetState();                                                                             // Reset State
         removeCards(deck);                                                                              // Remove any cards from deck
         generateCards(16);                                                                              // Generate Cards
